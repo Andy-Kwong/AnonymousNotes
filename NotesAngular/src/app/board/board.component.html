@@ -1,0 +1,13 @@
+<p *ngIf = "validationError" class = "error">{{ validationError }}</p>
+
+<div class = "addNote">
+    Note: <input type="text" name="newMessage.text" [(ngModel)] = "newMessage.text">
+    <input type="button" value = "Add Note" (click) = "submitMessage()">
+</div>
+
+<div id="scrollArea" ng-controller="ScrollController">
+    <div *ngFor="let message of messages" id="cards">
+        <p>{{ message.text }}</p>
+        <p>Noted on: {{ message.createdAt | date : "MMM dd, yyyy HH:mm:ss a" }}</p>
+    </div>
+</div>

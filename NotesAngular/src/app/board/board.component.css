@@ -1,0 +1,18 @@
+#scrollArea {
+    height: 150px;
+    overflow: auto;
+}
+
+#cards {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.addNote {
+    margin-bottom: 20px;
+}
+
+.error {
+    color: red;
+}
