@@ -15,6 +15,7 @@ export class BoardComponent implements OnInit {
 
     constructor(private _http: HttpService) { 
         this.newMessage = {text: '', createdAt: ''}
+        this.validationError = ''
     }
 
     ngOnInit() {
@@ -32,12 +33,12 @@ export class BoardComponent implements OnInit {
     submitMessage() {
         console.log(this.newMessage);
         let observable = this._http.addNewMessage(this.newMessage);
-        observable.subscribe (data => {
+        observable.subscribe (response => {
+            let data = response as any;
             console.log(data)
-            if (data.error.errors.text.message) {
+            if(data.error) {
                 this.validationError = data.error.errors.text.message;
             }
-            console.log(data.error.errors.text.message)
         })
         this.getAllMessages();
         this.newMessage = {text: ''}
